@@ -31,18 +31,17 @@ export function addMessage({role, content}) {
     $chat.appendChild($newMessage)
 
     if (role === 'user') {
-        $container.scrollTop = $container.scrollHeight
+        $main.scrollTop = $main.scrollHeight
     }
 
     return $messageText
 }
 
 export async function setChat($parent) {
-    const $main = document.querySelector('main')
+    $main = document.querySelector('main')
     $chat = document.createElement('ul')
     $chat.classList.add('chat')
 
-    $container = $parent
     $main.appendChild($chat)
     setPrompter($parent)
     setMessageTemplate($parent)
@@ -157,7 +156,7 @@ function appendChunks({content, $messageText}) {
     $spanText.textContent = content
     $spanText.classList.add('show')
     $messageText.appendChild($spanText)
-    $container.scrollTop = $container.scrollHeight
+    $main.scrollTop = $main.scrollHeight
 }
 
 function resetPromptInput() {
