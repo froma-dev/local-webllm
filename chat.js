@@ -2,18 +2,20 @@ import {MlcEngine} from "./mlcEngine.js";
 import botAvatarSrc from '/logos/lightning.svg'
 import userAvatarSrc from '/icons/user.svg'
 
-let $clearContextButton = document.createElement('button')
+let $clearContextButton
 let $loadingInfoText
 let $messageTemplate
 let $promptInput
 let $submitPromptButton
-let $container
+let $main
 let $chat
+let $welcomeMessage
 let mlcEngine
 
 export function clearContext() {
     mlcEngine.clearContext()
     $chat.textContent = ''
+    setWelcomeMessage()
 }
 
 export function addMessage({role, content}) {
@@ -67,19 +69,20 @@ const onInitProgressFinished = async (ev) => {
 }
 
 const setWelcomeMessage = () => {
-    addMessage({role: 'system', content: 'Hi! Please write your message below.'})
+    addMessage({role: 'system', content: 'Hi! Please type your prompt below.'})
+    $welcomeMessage = $chat.querySelector('.system')
 }
 
 function setPrompter($parent) {
     const $prompter = document.createElement('div')
-    const $clearContextButton = document.createElement('button')
     const $form = document.createElement('form')
+    $clearContextButton = document.createElement('button')
 
     $loadingInfoText = document.createElement('small')
     $clearContextButton.setAttribute('disabled', '')
     $clearContextButton.classList.add('clean')
     $clearContextButton.innerHTML = `
-        <img src="public/icons/trash.svg">
+        <img src="public/icons/trash.svg" alt="bin">
         <span class="clean-text">Clear context</span>`
 
     $form.setAttribute('action', '')
@@ -110,6 +113,10 @@ function setPrompter($parent) {
 
         if (promptInputText !== '') {
             resetPromptInput()
+        }
+
+        if (!$welcomeMessage.classList.contains('hidden')) {
+            $welcomeMessage.classList.add('hidden')
         }
 
         const promptMessage = addUserMessage({message: promptInputText})
@@ -163,7 +170,7 @@ function resetPromptInput() {
     $promptInput.value = ''
 }
 
-export function setMessageTemplate($parent) {
+function setMessageTemplate($parent) {
     $messageTemplate = document.createElement('template')
 
     $messageTemplate.setAttribute('id', 'message-template')
