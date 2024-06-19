@@ -1,5 +1,5 @@
 import './style.css'
-import {setChat, setMessageTemplate} from "./chat.js";
+import {setChat} from "./chat.js";
 import {setLoader} from "./components/loader.js";
 
 const $body = document.querySelector('body')

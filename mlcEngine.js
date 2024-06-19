@@ -1,16 +1,6 @@
 import {CreateWebWorkerMLCEngine, CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
 const INIT_PROGRESS = 0
 const INIT_PROGRESS_FINISHED = 1
-const initProgress = new CustomEvent("initprogress", {
-    detail: {
-        progress: INIT_PROGRESS,
-    },
-});
-const initProgressFinished = new CustomEvent("initprogressfinished", {
-    detail: {
-        progress: INIT_PROGRESS_FINISHED,
-    },
-});
 
 export class MlcEngine {
     constructor() {}

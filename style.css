@@ -57,7 +57,7 @@ main {
     min-width: 520px;
     max-width: 720px;
     height: 70vh;
-    padding: 24px;
+    padding: 24px 24px 0;
 
     border-radius: 8px;
     margin-bottom: 24px;
@@ -66,17 +66,18 @@ main {
     scroll-behavior: smooth;
 }
 
-ul {
+.chat {
     display: flex;
     flex-direction: column;
     list-style: none;
     padding: 0;
+    margin-bottom: 0;
 }
 
 .message {
     display: flex;
     gap: 8px;
-    margin: 4px 0;
+    margin: 8px 4px 0;
     padding: 4px 8px;
     width: 100%;
     align-items: flex-start;
@@ -107,6 +108,30 @@ ul {
             &.show {
                 animation: 0.5s appear-magically linear forwards;
             }
+        }
+    }
+
+    &.system {
+        height: 130px;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        transition: all 0.3s ease-in-out;
+
+        &.hidden {
+            height: 0;
+            gap: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+        }
+
+        p {
+            font-size: 24px;
         }
     }
 

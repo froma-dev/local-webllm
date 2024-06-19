@@ -10,7 +10,7 @@ export function setLoader($parent) {
     <img src=${brandLogo} class="loader-image" alt="loader">
     <p class="loader-text">Loading...</p>`
 
-    document.addEventListener('initprogressfinished', (e) => {
+    document.addEventListener('initprogressfinished', () => {
         hide()
     })
 
