@@ -1,14 +1,6 @@
 <div class="header">
-    <img src="public/logos/lightning.svg" width="200" height="100" />
+    <img src="public/logos/lightning.svg" alt="lightning" width="200" height="200" />
 </div>
-
-<style>
-    .header {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-</style>
 
 # Project: WebLLM Chat Bot
 
