@@ -1,6 +1,7 @@
 import {MlcEngine} from "./mlcEngine.js";
 import botAvatarSrc from '/logos/lightning.svg'
 import userAvatarSrc from '/icons/user.svg'
+import trashIcon from '/icons/trash.svg'
 
 let $clearContextButton
 let $loadingInfoText
@@ -82,7 +83,7 @@ function setPrompter($parent) {
     $clearContextButton.setAttribute('disabled', '')
     $clearContextButton.classList.add('clean')
     $clearContextButton.innerHTML = `
-        <img src="public/icons/trash.svg" alt="bin">
+        <img src=${trashIcon} alt="bin">
         <span class="clean-text">Clear context</span>`
 
     $form.setAttribute('action', '')

@@ -25,14 +25,13 @@ export class MlcEngine {
 
     async loadEngine() {
         const SELECTED_MODEL = 'Llama-3-8B-Instruct-q4f32_1-MLC-1k'
-        const workerPath = new URL("./worker.js", import.meta.url)
-        const workerOptions = {type: "module"}
+        const worker = new Worker(new URL("./worker.js", import.meta.url), {type: "module"})
 
         this.messages = []
 
         if (window.Worker) {
             this.engine = await CreateWebWorkerMLCEngine(
-                new Worker(workerPath, workerOptions),
+                worker,
                 SELECTED_MODEL,
                 {initProgressCallback: this.initProgressCallback}
             )
