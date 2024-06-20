@@ -58,8 +58,8 @@ export async function setChat($parent) {
 }
 
 const onInitProgress = (ev) => {
-    const {info} = ev.detail
-    $loadingInfoText.textContent = `${info.text}`
+    const {text} = ev.detail
+    $loadingInfoText.textContent = `${text}`
 }
 
 const onInitProgressFinished = async (ev) => {

@@ -1,24 +1,22 @@
 import {CreateWebWorkerMLCEngine, CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
-const INIT_PROGRESS = 0
-const INIT_PROGRESS_FINISHED = 1
 
 export class MlcEngine {
     constructor() {}
 
     initProgressCallback(info) {
-        if(info.progress === INIT_PROGRESS) {
+        const {text} = info
+        const textLoweredCase = text.toLowerCase()
+        const finishedLoading = textLoweredCase.includes('finish')
+        const isLoading = textLoweredCase.includes('loading')
+        const isFetching = textLoweredCase.includes('fetch')
+
+        if(!finishedLoading && isLoading || isFetching) {
             document.dispatchEvent(new CustomEvent("initprogress", {
-                detail: {
-                    progress: INIT_PROGRESS,
-                    info
-                },
+                detail: {text},
             }))
-        } else if(info.progress === INIT_PROGRESS_FINISHED) {
+        } else if(finishedLoading) {
             document.dispatchEvent(new CustomEvent("initprogressfinished", {
-                detail: {
-                    progress: INIT_PROGRESS_FINISHED,
-                    info
-                },
+                detail: {text},
             }))
         }
     }

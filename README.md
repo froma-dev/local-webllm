@@ -1,8 +1,10 @@
+<div style="display: flex; flex-direction: column; align-items: center">
 <div class="header">
-    <img src="public/logos/lightning.svg" alt="lightning" width="200" height="200" />
+    <img src="public/logos/lightning.svg" alt="lightning" width="150" height="150" />
 </div>
 
-# Project: WebLLM Chat Bot
+# WebLLM Chat Bot
+</div>
 
 ## Overview
 
